@@ -7,5 +7,5 @@
 </div>
 
 <% @employees.each() do |employee| %>
-  <li><%= employee.description %> <a href="/employee/<% employee.id %>/edit">Update this Employee's name</a></li>
+  <li><%= employee.name %> <a href="/employee/<% employee.id %>/edit">Update this Employee's name</a></li>
   <% end %>

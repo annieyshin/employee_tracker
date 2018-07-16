@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] = 'test'
 require('sinatra/activerecord')
 require('sinatra')
 require('sinatra/reloader')
@@ -13,6 +14,12 @@ end
 
 get("/employee/new") do
   erb(:employee_form)
+end
+
+post('/employee/new') do
+  name = params["name"]
+  Employee.create({:name => name})
+  redirect '/'
 end
 
 get("/division") do
