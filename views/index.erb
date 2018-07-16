@@ -1,0 +1,11 @@
+<h1>Welcome to the employee tracker, overlord!</h1>
+
+<div class="container">
+  <a href="/employee">View all employees</a>
+  <p> </p>
+  <a href="/employee/new">Add a new employee</a>
+</div>
+
+<% @employees.each() do |employee| %>
+  <li><%= employee.description %> <a href="/employee/<% employee.id %>/edit">Update this Employee's name</a></li>
+  <% end %>
