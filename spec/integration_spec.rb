@@ -15,16 +15,15 @@ describe 'adding a new employee', {:type => :feature} do
   end
 end
 
-# describe('viewing all of the list', {:type => :feature}) do
-#   it('allows a user to see all of the divisions that have been created') do
-#     division = Division.new({:title => 'HR', :id => nil})
-#     division.save
-#     visit('/')
-#     click_link('View All Divisions')
-#     expect(page).to have_content(division.title)
-#   end
-# end
-#
+describe('viewing all of the list', {:type => :feature}) do
+  it('allows a manager to see all of the divisions that have been created') do
+    division = Division.create ({:title => 'HR'})    
+    visit('/')
+    click_link('View all divisions')
+    expect(page).to have_content(division.title)
+  end
+end
+
 # describe('seeing details for a single division', {:type => :feature}) do
 #   it('allows a manager to click a division to see the employees and detaisl for it') do
 #     test_division = Division.new({:title => "IT", :id => nil})
