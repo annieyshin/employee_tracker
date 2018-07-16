@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <form action="/employee_assign" method="post">
+      <div class="col-md-3">
+        <h3>Pick a division:</h3>
+        <select id="divisions_drop" name="divisions_drop">
+          <%if @divisions != []%>
+            <% @divisions.each do |division| %>
+              <option value = "<%= division.id %>" > <%= division.title %> </option>
+            <% end %>
+          <% else %>
+            <option value="" disabled selected>no divisions yet</option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <h3>Pick an employee:</h3>
+        <select id="employees_drop" name="employees_drop">
+          <%if @employees != []%>
+            <% @employees.each do |employee| %>
+              <option value = "<%= employee.id %>" > <%= employee.name %> </option>
+            <% end %>
+          <% else %>
+            <option value="" disabled selected>no employees yet</option>
+          <% end %>
+        </select>
+      </div>
+  </div>
+      <div class="row">
+        <p>&nbsp;</p>
+        <button type="submit">Pick!</button>
+        <p>&nbsp;</p>
+      </div>
+    </form>
+
+</div>
+
+
+  <% if @divisions == []%>
+  <% else %>
+    <ul>
+    <% @divisions.each() do |division| %>
+      <li><%= division.title %> <a href="/division/<%= division.id %>/edit">Update this Division's title</a></li>
+    <% end %>
+    </ul>
+  <% end %>

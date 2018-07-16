@@ -1,3 +1,14 @@
-<% @divisions.each() do |division| %>
-  <li><%= division.title %> <a href="/division<% division.id %>/edit">Update this Division's title</a></li>
-  <% end %>
+  <form action="/division" method="post">
+    <label for="title">Division title</label>
+    <input type="text" name="title">
+    <button type="submit">Add</button>
+  </form>
+
+    <% if @divisions == []%>
+    <% else %>
+      <ul>
+      <% @divisions.each() do |division| %>
+        <li><%= division.title %> <a href="/division/<%= division.id %>/edit">Update this Division's title</a></li>
+      <% end %>
+      </ul>
+    <% end %>

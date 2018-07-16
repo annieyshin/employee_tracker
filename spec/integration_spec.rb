@@ -17,21 +17,19 @@ end
 
 describe('viewing all of the list', {:type => :feature}) do
   it('allows a manager to see all of the divisions that have been created') do
-    division = Division.create ({:title => 'HR'})    
+    division = Division.create ({:title => 'HR'})
     visit('/')
     click_link('View all divisions')
     expect(page).to have_content(division.title)
   end
 end
 
-# describe('seeing details for a single division', {:type => :feature}) do
-#   it('allows a manager to click a division to see the employees and detaisl for it') do
-#     test_division = Division.new({:title => "IT", :id => nil})
-#     test_division.save()
-#     test_employee = Employee.new({:name => "Dr. Funkhauser", :division_id => test_division.id()})
-#     test_employee.save()
-#     visit('/divisions')
-#     click_link(test_division.title())
-#     expect(page).to have_content(test_employee.name())
-#   end
-# end
+describe('seeing details for a single division', {:type => :feature}) do
+  it('allows a manager to click a division to see the employees and detaisl for it') do
+    test_division = Division.create ({:title => 'lab'})
+    test_employee = Employee.create ({:name => "Dr. Funkhauser", :division_id => test_division.id()})
+    visit('/division')
+    click_link(test_division.id())
+    expect(page).to have_content(test_employee.name())
+  end
+end
